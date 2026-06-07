@@ -1,0 +1,26 @@
+{
+  "available": [
+    {
+      "brief": "Build a rate-limited API-key issuance service. Must use Redis for state, Postgres for durability, and AES-GCM + HKDF for record encryption. Ships via docker-compose.",
+      "content_type": "text/markdown; charset=utf-8",
+      "endpoint": "/api/v1/challenges/design",
+      "name": "design",
+      "title": "Service design with infrastructure constraints"
+    },
+    {
+      "brief": "Build a React + TypeScript page that lets an on-call engineer investigate a usage-events dataset — filterable/sortable table, aggregate visualization, detail view, URL-persisted state.",
+      "content_type": "text/markdown; charset=utf-8",
+      "endpoint": "/api/v1/challenges/ui",
+      "name": "ui",
+      "title": "Dataset visualization UI"
+    },
+    {
+      "brief": "Answer a batch of 10,000 queries across three kinds (count, exists, range_count) against the 50,000-record jumbo dataset. Naive O(N×K) solutions will time out; preprocessed O(N+K) solutions finish in milliseconds.",
+      "content_type": "text/markdown; charset=utf-8",
+      "endpoint": "/api/v1/challenges/algorithm",
+      "name": "algorithm",
+      "title": "Algorithmic query engine"
+    }
+  ],
+  "note": "Challenges are free-floating. All challenges share the candidate's single 3-hour assessment clock — there are no per-challenge timers. Include your implementation under `challenges/<name>/` in the repo you submit via POST /api/v1/submit {\"type\":\"repo\",\"value\":\"...\"}."
+}

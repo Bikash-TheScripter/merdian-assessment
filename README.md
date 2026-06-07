@@ -46,4 +46,27 @@ Accepted Layer 2 hash:
 87676f14a77eda4ac8aff87b9e91c3b79f3a75e2cf46e9990862622d33e9e725
 ```
 
-Next step: find the alphabetic hidden answer across the decrypted records and submit it as `algorithm_answer`.
+Layer 4 analyzes the decrypted request-log dataset and submits a free-form operational finding as `analysis`.
+
+```bash
+cat notes/layer4-analysis.md
+```
+
+Accepted Layer 4 finding:
+
+```text
+Server-side failures are concentrated by user segment: web-dashboard has the highest 5xx rate (18/42 = 42.9%), while latency and request size have near-zero correlation with 5xx outcomes.
+```
+
+Optional algorithm challenge is implemented in TypeScript under `challenges/algorithm/`.
+
+```bash
+npm run challenge:algorithm
+npm run challenge:algorithm:submit
+```
+
+Accepted optional algorithm hash:
+
+```text
+f6bce69d2e94b8cc386bb9d458835fb4c91589e79ae8d3243d063ecf03a4ea44
+```

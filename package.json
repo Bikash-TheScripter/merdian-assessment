@@ -9,16 +9,16 @@
   },
   "scripts": {
     "build": "tsc",
+    "challenge:algorithm": "tsx challenges/algorithm/solver.ts",
+    "challenge:algorithm:submit": "tsx challenges/algorithm/solver.ts --submit",
     "decrypt:layer": "tsx src/client/decryptLayer.ts",
     "hash:integrity": "tsx src/client/integrityLayer.ts data/layer1-dataset.json",
-    "probe:requirements": "tsx src/client/probeRequirements.ts",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"No tests configured yet\""
+    "test": "node --import tsx --test challenges/algorithm/solver.test.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.17.0",
     "dotenv": "^17.4.2",
     "node-forge": "^1.4.0"
   },

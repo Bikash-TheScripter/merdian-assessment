@@ -6,3 +6,4 @@ node_modules/
 dist/
 data/*.pem
 data/decrypted-records.json
+challenges/algorithm/data/
