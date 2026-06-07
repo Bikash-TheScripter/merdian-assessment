@@ -70,3 +70,15 @@ Accepted optional algorithm hash:
 ```text
 f6bce69d2e94b8cc386bb9d458835fb4c91589e79ae8d3243d063ecf03a4ea44
 ```
+
+Final repository submission was accepted with type `repo`.
+
+```json
+{
+  "correct": true,
+  "layer": null,
+  "message": "Correct!",
+  "submission_id": "bf3fecd5-938f-4cb5-8f73-56fcb52307b5",
+  "type": "repo"
+}
+```
