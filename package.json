@@ -11,7 +11,7 @@
     "build": "tsc",
     "challenge:algorithm": "tsx challenges/algorithm/solver.ts",
     "challenge:algorithm:submit": "tsx challenges/algorithm/solver.ts --submit",
-    "decrypt:layer": "tsx src/client/decryptLayer.ts",
+    "decrypt:layer": "DOTENV_CONFIG_PATH=.env.example tsx src/client/decryptLayer.ts",
     "hash:integrity": "tsx src/client/integrityLayer.ts data/layer1-dataset.json",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test challenges/algorithm/solver.test.ts"

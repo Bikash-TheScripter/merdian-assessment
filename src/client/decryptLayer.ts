@@ -16,22 +16,28 @@ async function getPrivateKey(): Promise<string> {
   const apiKey = process.env.API_KEY;
 
   if (!baseUrl || !apiKey) {
-    throw new Error('BASE_URL and API_KEY environment variables are required');
+    return readFile('data/private-key.pem', 'utf8');
   }
 
-  const response = await fetch(`${baseUrl.replace(/\/$/, '')}/api/v1/private-key`, {
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-    },
-  });
+  try {
+    const response = await fetch(`${baseUrl.replace(/\/$/, '')}/api/v1/private-key`, {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+      },
+    });
 
-  const privateKey = await response.text();
+    const privateKey = await response.text();
 
-  if (!response.ok) {
-    throw new Error(`Private key request failed: ${response.status} ${privateKey}`);
+    if (!response.ok) {
+      throw new Error(`Private key request failed: ${response.status} ${privateKey}`);
+    }
+
+    return privateKey;
+  } catch (error) {
+    console.warn(`Falling back to saved private key: ${(error as Error).message}`);
+
+    return readFile('data/private-key.pem', 'utf8');
   }
-
-  return privateKey;
 }
 
 async function main(): Promise<void> {
@@ -56,12 +62,7 @@ async function main(): Promise<void> {
 
   console.log('decrypted count:', decryptedRecords.length);
   console.log('first record:', decryptedRecords[0]);
-  console.log('hash plaintext concat:', sha256(decryptedRecords.join('')));
-  console.log('hash newline plaintext:', sha256(decryptedRecords.join('\n')));
-  console.log(
-    'hash parsed json minified:',
-    sha256(JSON.stringify(decryptedRecords.map((record) => JSON.parse(record)))),
-  );
+  console.log('decrypted_hash:', sha256(decryptedRecords.join('')));
 }
 
 await main();
