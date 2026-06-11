@@ -7,7 +7,10 @@ type DatasetResponse = {
   note?: string;
 };
 
-const BASE_URL = import.meta.env.VITE_BASE_URL ?? "http://localhost:3001";
+const DEFAULT_DATASET_URL =
+  "https://ca-seassessment-api-dev.happywater-190f264d.northcentralus.azurecontainerapps.io/api/v1/challenges/ui/dataset";
+
+const DATASET_URL = import.meta.env.VITE_DATASET_URL ?? DEFAULT_DATASET_URL;
 
 export async function fetchDataset(): Promise<{
   records: UsageRecord[];
@@ -15,7 +18,7 @@ export async function fetchDataset(): Promise<{
   warning?: string;
 }> {
   try {
-    const response = await fetch(`${BASE_URL}/api/v1/challenges/ui/dataset`);
+    const response = await fetch(DATASET_URL);
 
     if (!response.ok) {
       throw new Error(`dataset fetch failed: ${response.status}`);
